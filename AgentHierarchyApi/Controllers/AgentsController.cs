@@ -158,6 +158,28 @@ public class AgentsController : ControllerBase
     }
 
     /// <summary>
+    /// Get agent upward tree by agent code (Down-Top: AG -> AL -> AE)
+    /// Shows the path from the agent up to the top level
+    /// </summary>
+    [HttpGet("upward-tree/code/{agentCode}")]
+    public async Task<ActionResult<AgentUpwardTreeDto>> GetAgentUpwardTreeByCode(string agentCode)
+    {
+        try
+        {
+            var tree = await _agentService.GetAgentUpwardTreeByCodeAsync(agentCode);
+            if (tree == null)
+                return NotFound($"Agent with code {agentCode} not found");
+
+            return Ok(tree);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error getting agent upward tree by code {AgentCode}", agentCode);
+            return StatusCode(500, "An error occurred while retrieving the upward tree");
+        }
+    }
+
+    /// <summary>
     /// Create a new agent
     /// </summary>
     [HttpPost]

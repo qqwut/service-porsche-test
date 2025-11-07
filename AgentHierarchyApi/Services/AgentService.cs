@@ -102,6 +102,40 @@ public class AgentService : IAgentService
         return BuildHierarchyTree(rootAgent, agentDict);
     }
 
+    public async Task<AgentUpwardTreeDto?> GetAgentUpwardTreeByCodeAsync(string agentCode)
+    {
+        var agent = await _agentRepository.GetAgentByCodeAsync(agentCode);
+        if (agent == null)
+            return null;
+
+        return await BuildUpwardTreeAsync(agent);
+    }
+
+    private async Task<AgentUpwardTreeDto> BuildUpwardTreeAsync(Agent agent)
+    {
+        var node = new AgentUpwardTreeDto
+        {
+            Id = agent.Id,
+            AgentCode = agent.AgentCode,
+            AgentName = agent.AgentName,
+            HierarchyCode = agent.Hierarchy.HierarchyCode,
+            RankCode = agent.Rank.RankCode,
+            ParentAgentId = agent.ParentAgentId,
+            Parent = null
+        };
+
+        if (agent.ParentAgentId.HasValue)
+        {
+            var parentAgent = await _agentRepository.GetAgentByIdAsync(agent.ParentAgentId.Value);
+            if (parentAgent != null)
+            {
+                node.Parent = await BuildUpwardTreeAsync(parentAgent);
+            }
+        }
+
+        return node;
+    }
+
     private AgentHierarchyTreeDto BuildHierarchyTree(Agent agent, Dictionary<int, Agent> allAgents)
     {
         var node = new AgentHierarchyTreeDto
