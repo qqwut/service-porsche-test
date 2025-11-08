@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace AgentHierarchyApi.Models;
 
 public class Hierarchy
@@ -10,5 +12,7 @@ public class Hierarchy
 
     // Navigation properties
     public Rank Rank { get; set; } = null!;
+
+    [JsonIgnore]
     public ICollection<Agent> Agents { get; set; } = new List<Agent>();
 }

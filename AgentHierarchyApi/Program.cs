@@ -6,7 +6,13 @@ using AgentHierarchyApi.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(opts =>
+{
+    // Prevent object cycle issues when serializing EF navigation properties
+    opts.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    // Optional: keep property names as declared (default)
+    // opts.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
 
 // Configure Entity Framework Core with PostgreSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -15,6 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Register repositories and services
 builder.Services.AddScoped<IAgentRepository, AgentRepository>();
 builder.Services.AddScoped<IAgentService, AgentService>();
+builder.Services.AddScoped<ILicenseRepository, LicenseRepository>();
+builder.Services.AddScoped<ILicenseService, LicenseService>();
 
 // Add Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
@@ -60,20 +68,21 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Apply migrations and seed data
-using (var scope = app.Services.CreateScope())
+// Apply migrations in the background so startup isn't blocked if the DB is unreachable
+_ = Task.Run(async () =>
 {
+    using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     try
     {
-        Console.WriteLine("Applying database migrations...");
-        dbContext.Database.Migrate();
+        Console.WriteLine("Applying database migrations in background...");
+        await dbContext.Database.MigrateAsync();
         Console.WriteLine("Database migrations applied successfully.");
     }
     catch (Exception ex)
     {
         Console.WriteLine($"An error occurred while migrating the database: {ex.Message}");
     }
-}
+});
 
 app.Run();

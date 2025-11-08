@@ -13,6 +13,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Rank> Ranks { get; set; } = null!;
     public DbSet<Hierarchy> Hierarchies { get; set; } = null!;
     public DbSet<Agent> Agents { get; set; } = null!;
+    public DbSet<License> Licenses { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -68,6 +69,20 @@ public class ApplicationDbContext : DbContext
                 .OnDelete(DeleteBehavior.Restrict);
         });
 
+    // Configure License entity
+        modelBuilder.Entity<License>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.LicenseNumber).IsRequired().HasMaxLength(50);
+            entity.HasIndex(e => e.LicenseNumber).IsUnique();
+            entity.HasIndex(e => e.AgentId);
+
+            entity.HasOne(e => e.Agent)
+        .WithMany(a => a.Licenses)
+                .HasForeignKey(e => e.AgentId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
         // Seed data
         SeedData(modelBuilder);
     }
@@ -109,5 +124,10 @@ public class ApplicationDbContext : DbContext
             new Agent { Id = 5, AgentCode = "AG0002", AgentName = "General Agent 2", HierarchyId = 2, RankId = 1, ParentAgentId = 2, IsActive = true, CreatedDate = now, UpdatedDate = now },
             new Agent { Id = 6, AgentCode = "AG0003", AgentName = "General Agent 3", HierarchyId = 1, RankId = 1, ParentAgentId = 3, IsActive = true, CreatedDate = now, UpdatedDate = now }
         );
+
+        // Optionally seed sample License
+        // modelBuilder.Entity<License>().HasData(
+        //     new License { Id = 1, AgentId = 4, LicenseNumber = "LIC-AG0001", IssueDate = now.Date, ExpiryDate = now.Date.AddYears(1), IsActive = true, CreatedDate = now, UpdatedDate = now }
+        // );
     }
 }
