@@ -3,6 +3,7 @@ using System;
 using AgentHierarchyApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AgentHierarchyApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251110061848_AddImageTable")]
+    partial class AddImageTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,95 +79,95 @@ namespace AgentHierarchyApi.Migrations
                             Id = 1,
                             AgentCode = "AE0001",
                             AgentName = "Executive Agent A9",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 9,
                             IsActive = true,
                             RankId = 3,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         },
                         new
                         {
                             Id = 2,
                             AgentCode = "AE0002",
                             AgentName = "Executive Agent A8",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 8,
                             IsActive = true,
                             ParentAgentId = 1,
                             RankId = 3,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         },
                         new
                         {
                             Id = 3,
                             AgentCode = "AE0003",
                             AgentName = "Executive Agent A7",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 7,
                             IsActive = true,
                             ParentAgentId = 2,
                             RankId = 3,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         },
                         new
                         {
                             Id = 4,
                             AgentCode = "AL0001",
                             AgentName = "Leader Agent A6",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 6,
                             IsActive = true,
                             ParentAgentId = 3,
                             RankId = 2,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         },
                         new
                         {
                             Id = 5,
                             AgentCode = "AL0002",
                             AgentName = "Leader Agent A5",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 5,
                             IsActive = true,
                             ParentAgentId = 4,
                             RankId = 2,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         },
                         new
                         {
                             Id = 6,
                             AgentCode = "AL0003",
                             AgentName = "Leader Agent A4",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 4,
                             IsActive = true,
                             ParentAgentId = 5,
                             RankId = 2,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         },
                         new
                         {
                             Id = 7,
                             AgentCode = "AG0001",
                             AgentName = "General Agent A1-1",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 1,
                             IsActive = true,
                             ParentAgentId = 6,
                             RankId = 1,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         },
                         new
                         {
                             Id = 8,
                             AgentCode = "AG0002",
                             AgentName = "General Agent A1-2",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
+                            CreatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093),
                             HierarchyId = 1,
                             IsActive = true,
                             ParentAgentId = 6,
                             RankId = 1,
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899)
+                            UpdatedDate = new DateTime(2025, 11, 10, 6, 18, 47, 467, DateTimeKind.Utc).AddTicks(4093)
                         });
                 });
 
@@ -438,104 +440,6 @@ namespace AgentHierarchyApi.Migrations
                         .IsUnique();
 
                     b.ToTable("T_CLIENT", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClientCode = "CLI0001",
-                            ClientTypeCode = "INDIVIDUAL",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DateOfBirth = new DateTime(1985, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
-                            FirstName = "สมชาย",
-                            FirstNameEn = "Somchai",
-                            GenderCode = "M",
-                            IdentityType = "NATIONAL_ID",
-                            IsActive = true,
-                            LanguagePreferenceCode = "TH",
-                            LastName = "ใจดี",
-                            LastNameEn = "Jaidee",
-                            MaritalStatusCode = "MARRIED",
-                            NationalityCode = "THA",
-                            PremiumCapacity = 50000.00m,
-                            PrimaryOccupationBusinessType = "TRADING",
-                            PrimaryOccupationOrganizationName = "ABC Trading Co., Ltd.",
-                            RefId = "AG0001",
-                            TitleCode = "MR",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("4d72b511-3818-4b22-b7b7-cbf87240bf7c")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClientCode = "CLI0002",
-                            ClientTypeCode = "INDIVIDUAL",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DateOfBirth = new DateTime(1990, 8, 20, 0, 0, 0, 0, DateTimeKind.Utc),
-                            FirstName = "สมหญิง",
-                            FirstNameEn = "Somying",
-                            GenderCode = "F",
-                            IdentityType = "NATIONAL_ID",
-                            IsActive = true,
-                            LanguagePreferenceCode = "TH",
-                            LastName = "รักดี",
-                            LastNameEn = "Rakdee",
-                            MaritalStatusCode = "SINGLE",
-                            NationalityCode = "THA",
-                            PremiumCapacity = 75000.00m,
-                            PrimaryOccupationBusinessType = "GOVERNMENT",
-                            PrimaryOccupationOrganizationName = "Ministry of Finance",
-                            RefId = "AG0001",
-                            TitleCode = "MRS",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("040839bc-5426-490b-932e-96149c123866")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClientCode = "CLI0003",
-                            ClientTypeCode = "ORGANIZATION",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IdentityType = "TAX_ID",
-                            IsActive = true,
-                            LanguagePreferenceCode = "TH",
-                            NationalityCode = "THA",
-                            OrganizationBusinessType = "INSURANCE",
-                            OrganizationName = "บริษัท ไทยประกันภัย จำกัด",
-                            OrganizationNameEn = "Thai Insurance Company Limited",
-                            OrganizationRegistrationDate = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            PremiumCapacity = 5000000.00m,
-                            RefId = "AE0001",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("8110c563-9f2f-4dc6-8047-9b74f110b2d1")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClientCode = "CLI0004",
-                            ClientTypeCode = "INDIVIDUAL",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DateOfBirth = new DateTime(1975, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc),
-                            FirstName = "John",
-                            FirstNameEn = "John",
-                            GenderCode = "M",
-                            IdentityType = "PASSPORT",
-                            IsActive = true,
-                            LanguagePreferenceCode = "EN",
-                            LastName = "Smith",
-                            LastNameEn = "Smith",
-                            MaritalStatusCode = "MARRIED",
-                            NationalityCode = "USA",
-                            PlaceOfBirthCity = "New York",
-                            PlaceOfBirthCountryCode = "USA",
-                            PremiumCapacity = 200000.00m,
-                            PrimaryOccupationBusinessType = "TECHNOLOGY",
-                            PrimaryOccupationOrganizationName = "Tech Global Inc.",
-                            RefId = "AE0001",
-                            TitleCode = "MR",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("d83be562-5c63-4218-a722-7e18eea71f1c")
-                        });
                 });
 
             modelBuilder.Entity("AgentHierarchyApi.Models.ClientAddress", b =>
@@ -662,81 +566,6 @@ namespace AgentHierarchyApi.Migrations
                         .IsUnique();
 
                     b.ToTable("T_CLIENT_ADDRESS", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AddressDetail = "ซอยลาดพร้าว 101",
-                            AddressMoo = "5",
-                            AddressNo = "123/45",
-                            AddressRoad = "ลาดพร้าว",
-                            AddressTypeCode = "HOME",
-                            ClientCode = "CLI0001",
-                            CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DistrictCode = "1001",
-                            IsPrimary = true,
-                            PostalCode = "10230",
-                            ProvinceCode = "10",
-                            SubdistrictCode = "100101",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("3c5a42d7-5109-433a-898d-a13dbb736594")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AddressNo = "567/89",
-                            AddressRoad = "พระราม 9",
-                            AddressTypeCode = "HOME",
-                            AddressVillageBuilding = "หมู่บ้านสุขใจ",
-                            ClientCode = "CLI0002",
-                            CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DistrictCode = "1001",
-                            IsPrimary = true,
-                            PostalCode = "10250",
-                            ProvinceCode = "10",
-                            SubdistrictCode = "100102",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("2666bbfc-6fb1-4451-910f-c76529d38e7a")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AddressNo = "999",
-                            AddressRoad = "สาทร",
-                            AddressTypeCode = "OFFICE",
-                            AddressVillageBuilding = "อาคารไทยประกัน ทาวเวอร์",
-                            ClientCode = "CLI0003",
-                            CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DistrictCode = "1002",
-                            IsPrimary = true,
-                            PostalCode = "10120",
-                            ProvinceCode = "10",
-                            SubdistrictCode = "100201",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("d91ede4f-3eb5-40a6-bf46-90af5ee27cea")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AddressNo = "88/12",
-                            AddressRoad = "Sukhumvit",
-                            AddressTypeCode = "HOME",
-                            AddressVillageBuilding = "Luxury Condo",
-                            ClientCode = "CLI0004",
-                            CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DistrictCode = "1003",
-                            IsPrimary = true,
-                            PostalCode = "10110",
-                            ProvinceCode = "10",
-                            SubdistrictCode = "100301",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("54927243-accc-48f3-a5a2-4ffe33b4935d")
-                        });
                 });
 
             modelBuilder.Entity("AgentHierarchyApi.Models.ClientContact", b =>
@@ -806,112 +635,6 @@ namespace AgentHierarchyApi.Migrations
                         .IsUnique();
 
                     b.ToTable("T_CLIENT_CONTACT", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClientCode = "CLI0001",
-                            ContactTypeCode = "MOBILE",
-                            ContactValue = "081-234-5678",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = true,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("429e5d16-e90e-4615-a9a9-060c3d3470b9")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClientCode = "CLI0001",
-                            ContactTypeCode = "EMAIL",
-                            ContactValue = "somchai.j@email.com",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = false,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("077fc481-a83c-4de8-904b-a2007493098d")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClientCode = "CLI0002",
-                            ContactTypeCode = "MOBILE",
-                            ContactValue = "082-345-6789",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = true,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("cd9a2a8f-d3f2-49e6-82d7-ae4ba9eea31b")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClientCode = "CLI0002",
-                            ContactTypeCode = "EMAIL",
-                            ContactValue = "somying.r@email.com",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = false,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("5c82baa7-c701-41f1-9139-0d6f5119e4cc")
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ClientCode = "CLI0003",
-                            ContactTypeCode = "OFFICE_PHONE",
-                            ContactValue = "02-123-4567",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = true,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("bc631174-b527-4925-beb9-dd63274a34e9")
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ClientCode = "CLI0003",
-                            ContactTypeCode = "EMAIL",
-                            ContactValue = "info@thaiinsurance.com",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = false,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("8180cf94-ab2c-4f14-b885-437c077e0891")
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ClientCode = "CLI0004",
-                            ContactTypeCode = "MOBILE",
-                            ContactValue = "+1-555-1234",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = true,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("5a6e2116-d940-4642-ad20-307a723b3fbb")
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ClientCode = "CLI0004",
-                            ContactTypeCode = "EMAIL",
-                            ContactValue = "john.smith@techglobal.com",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            IsPrimary = false,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("da392db3-219d-4172-87f3-ecb624ae9c4b")
-                        });
                 });
 
             modelBuilder.Entity("AgentHierarchyApi.Models.ClientRole", b =>
@@ -997,98 +720,6 @@ namespace AgentHierarchyApi.Migrations
                         .IsUnique();
 
                     b.ToTable("T_CLIENT_ROLE", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClientCode = "CLI0001",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            IsActive = true,
-                            PolicyNo = "POL001-2025",
-                            ReferenceNo = "POL-2025-001",
-                            Remark = "Life Insurance Policy Owner",
-                            RoleCode = "POLICY_OWNER",
-                            RoleSeqNo = 1,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("d82c86c7-6632-4a3e-8e85-b66e444c5a7e")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClientCode = "CLI0001",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            IsActive = true,
-                            PolicyNo = "POL001-2025",
-                            ReferenceNo = "POL-2025-001",
-                            Remark = "Insured Person",
-                            RoleCode = "INSURED",
-                            RoleSeqNo = 1,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("15e60968-f8a7-41aa-a248-dbd84613d589")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClientCode = "CLI0002",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            IsActive = true,
-                            PolicyNo = "POL001-2025",
-                            ReferenceNo = "POL-2025-001",
-                            Remark = "Primary Beneficiary - Spouse",
-                            RoleCode = "BENEFICIARY",
-                            RoleSeqNo = 1,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("7e240e2d-2dff-4862-9784-59b568a71d32")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClientCode = "CLI0003",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            IsActive = true,
-                            PolicyNo = "CORP001-2025",
-                            ReferenceNo = "CORP-2025-001",
-                            Remark = "Corporate Insurance Client",
-                            RoleCode = "CORPORATE_CLIENT",
-                            RoleSeqNo = 1,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("426645e0-f584-45d3-beaf-7136dffdd71a")
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ClientCode = "CLI0004",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            EffectiveDate = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ExpiryDate = new DateTime(2026, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            IsActive = true,
-                            PolicyNo = "POL002-2025",
-                            ReferenceNo = "POL-2025-002",
-                            Remark = "Expatriate Policy Owner",
-                            RoleCode = "POLICY_OWNER",
-                            RoleSeqNo = 1,
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("b7bb5fcd-1ba9-40ad-b8bd-39bded9b11f8")
-                        });
                 });
 
             modelBuilder.Entity("AgentHierarchyApi.Models.Hierarchy", b =>
@@ -1324,176 +955,6 @@ namespace AgentHierarchyApi.Migrations
                         .IsUnique();
 
                     b.ToTable("T_IMAGE", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ContentType = "image/jpeg",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DisplayOrder = 1,
-                            FileName = "somchai_profile.jpg",
-                            FileSize = 70L,
-                            Height = 600,
-                            ImageCategory = "PERSONAL",
-                            ImageCode = "IMG0001",
-                            ImageData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 252, 255, 159, 161, 30, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            ImageTypeCode = "PROFILE",
-                            IsActive = true,
-                            IsPrimary = true,
-                            RefId = "CLI0001",
-                            Remark = "Profile picture",
-                            ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("11111111-1111-1111-1111-111111111111"),
-                            Width = 800
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ContentType = "image/jpeg",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DisplayOrder = 2,
-                            FileName = "somchai_idcard.jpg",
-                            FileSize = 70L,
-                            Height = 768,
-                            ImageCategory = "DOCUMENT",
-                            ImageCode = "IMG0002",
-                            ImageData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 252, 255, 159, 161, 30, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            ImageTypeCode = "ID_CARD",
-                            IsActive = true,
-                            IsPrimary = false,
-                            RefId = "CLI0001",
-                            Remark = "National ID Card",
-                            ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Width = 1024
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ContentType = "image/jpeg",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DisplayOrder = 1,
-                            FileName = "somying_profile.jpg",
-                            FileSize = 70L,
-                            Height = 600,
-                            ImageCategory = "PERSONAL",
-                            ImageCode = "IMG0003",
-                            ImageData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 252, 255, 159, 161, 30, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            ImageTypeCode = "PROFILE",
-                            IsActive = true,
-                            IsPrimary = true,
-                            RefId = "CLI0002",
-                            Remark = "Profile picture",
-                            ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Width = 800
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ContentType = "image/png",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DisplayOrder = 1,
-                            FileName = "thai_insurance_logo.png",
-                            FileSize = 70L,
-                            Height = 400,
-                            ImageCategory = "CORPORATE",
-                            ImageCode = "IMG0004",
-                            ImageData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 252, 255, 159, 161, 30, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            ImageTypeCode = "COMPANY_LOGO",
-                            IsActive = true,
-                            IsPrimary = true,
-                            RefId = "CLI0003",
-                            Remark = "Company Logo",
-                            ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("44444444-4444-4444-4444-444444444444"),
-                            Width = 400
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ContentType = "image/jpeg",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DisplayOrder = 2,
-                            FileName = "company_registration.pdf.jpg",
-                            FileSize = 70L,
-                            Height = 1600,
-                            ImageCategory = "DOCUMENT",
-                            ImageCode = "IMG0005",
-                            ImageData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 252, 255, 159, 161, 30, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            ImageTypeCode = "REGISTRATION",
-                            IsActive = true,
-                            IsPrimary = false,
-                            RefId = "CLI0003",
-                            Remark = "Company Registration Document",
-                            ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("55555555-5555-5555-5555-555555555555"),
-                            Width = 1200
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ContentType = "image/jpeg",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DisplayOrder = 1,
-                            FileName = "john_passport.jpg",
-                            FileSize = 70L,
-                            Height = 768,
-                            ImageCategory = "DOCUMENT",
-                            ImageCode = "IMG0006",
-                            ImageData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 252, 255, 159, 161, 30, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            ImageTypeCode = "PASSPORT",
-                            IsActive = true,
-                            IsPrimary = true,
-                            RefId = "CLI0004",
-                            Remark = "Passport Photo Page",
-                            ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("66666666-6666-6666-6666-666666666666"),
-                            Width = 1024
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ContentType = "image/png",
-                            CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            DisplayOrder = 2,
-                            FileName = "john_signature.png",
-                            FileSize = 70L,
-                            Height = 200,
-                            ImageCategory = "VERIFICATION",
-                            ImageCode = "IMG0007",
-                            ImageData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 252, 255, 159, 161, 30, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            ImageTypeCode = "SIGNATURE",
-                            IsActive = true,
-                            IsPrimary = false,
-                            RefId = "CLI0004",
-                            Remark = "Digital Signature",
-                            ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
-                            UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 10, 6, 53, 12, 276, DateTimeKind.Utc).AddTicks(5899),
-                            Uuid = new Guid("77777777-7777-7777-7777-777777777777"),
-                            Width = 400
-                        });
                 });
 
             modelBuilder.Entity("AgentHierarchyApi.Models.License", b =>

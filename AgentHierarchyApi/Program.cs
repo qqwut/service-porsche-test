@@ -23,6 +23,10 @@ builder.Services.AddScoped<IAgentRepository, AgentRepository>();
 builder.Services.AddScoped<IAgentService, AgentService>();
 builder.Services.AddScoped<ILicenseRepository, LicenseRepository>();
 builder.Services.AddScoped<ILicenseService, LicenseService>();
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 // Add Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
