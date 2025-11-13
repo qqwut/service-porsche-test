@@ -118,6 +118,8 @@ public class AgentService : IAgentService
             Id = agent.Id,
             AgentCode = agent.AgentCode,
             AgentName = agent.AgentName,
+            AgentType = agent.AgentType,
+            LeaderCode = agent.LeaderCode,
             HierarchyCode = agent.Hierarchy.HierarchyCode,
             RankCode = agent.Rank.RankCode,
             ParentAgentId = agent.ParentAgentId,
@@ -143,6 +145,8 @@ public class AgentService : IAgentService
             Id = agent.Id,
             AgentCode = agent.AgentCode,
             AgentName = agent.AgentName,
+            AgentType = agent.AgentType,
+            LeaderCode = agent.LeaderCode,
             HierarchyCode = agent.Hierarchy.HierarchyCode,
             RankCode = agent.Rank.RankCode,
             Children = new List<AgentHierarchyTreeDto>()
@@ -198,6 +202,8 @@ public class AgentService : IAgentService
         {
             AgentCode = agentDto.AgentCode,
             AgentName = agentDto.AgentName,
+            AgentType = agentDto.AgentType,
+            LeaderCode = agentDto.LeaderCode,
             HierarchyId = hierarchy.Id,
             RankId = hierarchy.RankId,
             ParentAgentId = agentDto.ParentAgentId,
@@ -245,6 +251,8 @@ public class AgentService : IAgentService
         }
 
         agent.AgentName = agentDto.AgentName;
+        agent.AgentType = agentDto.AgentType;
+        agent.LeaderCode = agentDto.LeaderCode;
         agent.HierarchyId = hierarchy.Id;
         agent.RankId = hierarchy.RankId;
         agent.ParentAgentId = agentDto.ParentAgentId;
@@ -267,6 +275,8 @@ public class AgentService : IAgentService
             Id = agent.Id,
             AgentCode = agent.AgentCode,
             AgentName = agent.AgentName,
+            AgentType = agent.AgentType,
+            LeaderCode = agent.LeaderCode,
             HierarchyCode = agent.Hierarchy.HierarchyCode,
             RankCode = agent.Rank.RankCode,
             ParentAgentId = agent.ParentAgentId,

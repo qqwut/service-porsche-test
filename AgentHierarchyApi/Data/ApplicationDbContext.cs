@@ -27,6 +27,7 @@ public class ApplicationDbContext : DbContext
         // Configure Rank entity
         modelBuilder.Entity<Rank>(entity =>
         {
+            entity.ToTable("ranks");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.RankCode).IsRequired().HasMaxLength(10);
             entity.Property(e => e.RankName).IsRequired().HasMaxLength(50);
@@ -36,6 +37,7 @@ public class ApplicationDbContext : DbContext
         // Configure Hierarchy entity
         modelBuilder.Entity<Hierarchy>(entity =>
         {
+            entity.ToTable("hierarchies");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.HierarchyCode).IsRequired().HasMaxLength(10);
             entity.Property(e => e.HierarchyName).IsRequired().HasMaxLength(50);
@@ -50,13 +52,18 @@ public class ApplicationDbContext : DbContext
         // Configure Agent entity
         modelBuilder.Entity<Agent>(entity =>
         {
+            entity.ToTable("agents");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.AgentCode).IsRequired().HasMaxLength(20);
             entity.Property(e => e.AgentName).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.AgentType).IsRequired().HasMaxLength(20).HasDefaultValue("Agent");
+            entity.Property(e => e.LeaderCode).HasMaxLength(20);
             entity.HasIndex(e => e.AgentCode).IsUnique();
+            entity.HasIndex(e => e.LeaderCode);
             entity.HasIndex(e => e.HierarchyId);
             entity.HasIndex(e => e.ParentAgentId);
             entity.HasIndex(e => e.RankId);
+            entity.HasIndex(e => e.AgentType);
 
             entity.HasOne(e => e.Hierarchy)
                 .WithMany(h => h.Agents)
@@ -77,6 +84,7 @@ public class ApplicationDbContext : DbContext
     // Configure License entity
         modelBuilder.Entity<License>(entity =>
         {
+            entity.ToTable("licenses");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.LicenseNumber).IsRequired().HasMaxLength(50);
             entity.HasIndex(e => e.LicenseNumber).IsUnique();
@@ -91,7 +99,7 @@ public class ApplicationDbContext : DbContext
         // Configure Client entity
         modelBuilder.Entity<Client>(entity =>
         {
-            entity.ToTable("T_CLIENT");
+            entity.ToTable("t_client");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Uuid).HasColumnName("UUID").IsRequired();
@@ -164,7 +172,7 @@ public class ApplicationDbContext : DbContext
         // Configure ClientAddress entity
         modelBuilder.Entity<ClientAddress>(entity =>
         {
-            entity.ToTable("T_CLIENT_ADDRESS");
+            entity.ToTable("t_client_address");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Uuid).HasColumnName("UUID");
@@ -202,7 +210,7 @@ public class ApplicationDbContext : DbContext
         // Configure ClientContact entity
         modelBuilder.Entity<ClientContact>(entity =>
         {
-            entity.ToTable("T_CLIENT_CONTACT");
+            entity.ToTable("t_client_contact");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Uuid).HasColumnName("UUID").IsRequired();
@@ -229,7 +237,7 @@ public class ApplicationDbContext : DbContext
         // Configure ClientRole entity
         modelBuilder.Entity<ClientRole>(entity =>
         {
-            entity.ToTable("T_CLIENT_ROLE");
+            entity.ToTable("t_client_role");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Uuid).HasColumnName("UUID").IsRequired();
@@ -260,7 +268,7 @@ public class ApplicationDbContext : DbContext
         // Configure Image entity
         modelBuilder.Entity<Image>(entity =>
         {
-            entity.ToTable("T_IMAGE");
+            entity.ToTable("t_image");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Uuid).HasColumnName("UUID").IsRequired();

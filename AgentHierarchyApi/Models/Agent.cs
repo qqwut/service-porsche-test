@@ -7,6 +7,8 @@ public class Agent
     public int Id { get; set; }
     public string AgentCode { get; set; } = string.Empty;
     public string AgentName { get; set; } = string.Empty;
+    public string AgentType { get; set; } = "Agent"; // Broker | Agent | Direct
+    public string? LeaderCode { get; set; }
     public int HierarchyId { get; set; }
     public int? ParentAgentId { get; set; }
     public int RankId { get; set; }

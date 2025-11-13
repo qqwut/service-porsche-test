@@ -3,6 +3,7 @@ using System;
 using AgentHierarchyApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AgentHierarchyApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251113050130_AddAgentType")]
+    partial class AddAgentType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,10 +58,6 @@ namespace AgentHierarchyApi.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("LeaderCode")
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
                     b.Property<int?>("ParentAgentId")
                         .HasColumnType("integer");
 
@@ -78,13 +76,11 @@ namespace AgentHierarchyApi.Migrations
 
                     b.HasIndex("HierarchyId");
 
-                    b.HasIndex("LeaderCode");
-
                     b.HasIndex("ParentAgentId");
 
                     b.HasIndex("RankId");
 
-                    b.ToTable("agents", (string)null);
+                    b.ToTable("Agents");
 
                     b.HasData(
                         new
@@ -93,11 +89,11 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AE0001",
                             AgentName = "Executive Agent A9",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 9,
                             IsActive = true,
                             RankId = 3,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         },
                         new
                         {
@@ -105,12 +101,12 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AE0002",
                             AgentName = "Executive Agent A8",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 8,
                             IsActive = true,
                             ParentAgentId = 1,
                             RankId = 3,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         },
                         new
                         {
@@ -118,12 +114,12 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AE0003",
                             AgentName = "Executive Agent A7",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 7,
                             IsActive = true,
                             ParentAgentId = 2,
                             RankId = 3,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         },
                         new
                         {
@@ -131,12 +127,12 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AL0001",
                             AgentName = "Leader Agent A6",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 6,
                             IsActive = true,
                             ParentAgentId = 3,
                             RankId = 2,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         },
                         new
                         {
@@ -144,12 +140,12 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AL0002",
                             AgentName = "Leader Agent A5",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 5,
                             IsActive = true,
                             ParentAgentId = 4,
                             RankId = 2,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         },
                         new
                         {
@@ -157,12 +153,12 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AL0003",
                             AgentName = "Leader Agent A4",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 4,
                             IsActive = true,
                             ParentAgentId = 5,
                             RankId = 2,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         },
                         new
                         {
@@ -170,12 +166,12 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AG0001",
                             AgentName = "General Agent A1-1",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 1,
                             IsActive = true,
                             ParentAgentId = 6,
                             RankId = 1,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         },
                         new
                         {
@@ -183,12 +179,12 @@ namespace AgentHierarchyApi.Migrations
                             AgentCode = "AG0002",
                             AgentName = "General Agent A1-2",
                             AgentType = "Agent",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             HierarchyId = 1,
                             IsActive = true,
                             ParentAgentId = 6,
                             RankId = 1,
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176)
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314)
                         });
                 });
 
@@ -460,7 +456,7 @@ namespace AgentHierarchyApi.Migrations
                     b.HasIndex("Uuid")
                         .IsUnique();
 
-                    b.ToTable("t_client", (string)null);
+                    b.ToTable("T_CLIENT", (string)null);
 
                     b.HasData(
                         new
@@ -468,7 +464,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 1,
                             ClientCode = "CLI0001",
                             ClientTypeCode = "INDIVIDUAL",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DateOfBirth = new DateTime(1985, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             FirstName = "สมชาย",
                             FirstNameEn = "Somchai",
@@ -485,15 +481,15 @@ namespace AgentHierarchyApi.Migrations
                             PrimaryOccupationOrganizationName = "ABC Trading Co., Ltd.",
                             RefId = "AG0001",
                             TitleCode = "MR",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("1f8d0f1a-548d-442b-9bd9-e1232073f137")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("454be0ec-008b-4b9e-a885-8bcb94b4b67c")
                         },
                         new
                         {
                             Id = 2,
                             ClientCode = "CLI0002",
                             ClientTypeCode = "INDIVIDUAL",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DateOfBirth = new DateTime(1990, 8, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             FirstName = "สมหญิง",
                             FirstNameEn = "Somying",
@@ -510,15 +506,15 @@ namespace AgentHierarchyApi.Migrations
                             PrimaryOccupationOrganizationName = "Ministry of Finance",
                             RefId = "AG0001",
                             TitleCode = "MRS",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("150d0663-1f23-45d3-99ac-5971a9cefcb3")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("bbedbcc0-5218-4733-b1e9-bef80926fb6a")
                         },
                         new
                         {
                             Id = 3,
                             ClientCode = "CLI0003",
                             ClientTypeCode = "ORGANIZATION",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IdentityType = "TAX_ID",
                             IsActive = true,
                             LanguagePreferenceCode = "TH",
@@ -529,15 +525,15 @@ namespace AgentHierarchyApi.Migrations
                             OrganizationRegistrationDate = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             PremiumCapacity = 5000000.00m,
                             RefId = "AE0001",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("bd080399-3157-4c3f-9dc5-069e2ea237bb")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("a2f771a4-11fa-4e68-a4f2-ef02023f5606")
                         },
                         new
                         {
                             Id = 4,
                             ClientCode = "CLI0004",
                             ClientTypeCode = "INDIVIDUAL",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DateOfBirth = new DateTime(1975, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             FirstName = "John",
                             FirstNameEn = "John",
@@ -556,8 +552,8 @@ namespace AgentHierarchyApi.Migrations
                             PrimaryOccupationOrganizationName = "Tech Global Inc.",
                             RefId = "AE0001",
                             TitleCode = "MR",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("5402c760-253a-475f-a537-59d0d67ee232")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("beaf63d8-7905-4e53-926b-ff5693d59168")
                         });
                 });
 
@@ -684,7 +680,7 @@ namespace AgentHierarchyApi.Migrations
                     b.HasIndex("Uuid")
                         .IsUnique();
 
-                    b.ToTable("t_client_address", (string)null);
+                    b.ToTable("T_CLIENT_ADDRESS", (string)null);
 
                     b.HasData(
                         new
@@ -697,14 +693,14 @@ namespace AgentHierarchyApi.Migrations
                             AddressTypeCode = "HOME",
                             ClientCode = "CLI0001",
                             CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DistrictCode = "1001",
                             IsPrimary = true,
                             PostalCode = "10230",
                             ProvinceCode = "10",
                             SubdistrictCode = "100101",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("1a7fad59-c8c1-4784-8e9e-3b88e9116a4d")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("e75085ff-f09b-4bf1-a30d-a5283086471c")
                         },
                         new
                         {
@@ -715,14 +711,14 @@ namespace AgentHierarchyApi.Migrations
                             AddressVillageBuilding = "หมู่บ้านสุขใจ",
                             ClientCode = "CLI0002",
                             CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DistrictCode = "1001",
                             IsPrimary = true,
                             PostalCode = "10250",
                             ProvinceCode = "10",
                             SubdistrictCode = "100102",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("0d10ceed-1904-4f72-8063-b8de35987662")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("9ee3df49-39ce-4bcb-b077-b12923eedce5")
                         },
                         new
                         {
@@ -733,14 +729,14 @@ namespace AgentHierarchyApi.Migrations
                             AddressVillageBuilding = "อาคารไทยประกัน ทาวเวอร์",
                             ClientCode = "CLI0003",
                             CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DistrictCode = "1002",
                             IsPrimary = true,
                             PostalCode = "10120",
                             ProvinceCode = "10",
                             SubdistrictCode = "100201",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("65b6d912-10cf-4061-989b-539a79be9b02")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("7961019a-7655-4163-8a87-3991ab3e707a")
                         },
                         new
                         {
@@ -751,14 +747,14 @@ namespace AgentHierarchyApi.Migrations
                             AddressVillageBuilding = "Luxury Condo",
                             ClientCode = "CLI0004",
                             CountryCode = "THA",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DistrictCode = "1003",
                             IsPrimary = true,
                             PostalCode = "10110",
                             ProvinceCode = "10",
                             SubdistrictCode = "100301",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("979e71b5-e2c5-44d8-bdef-7ddf0f79e1d6")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("f79a9cdd-7d35-482b-beed-3be6ed00484c")
                         });
                 });
 
@@ -828,7 +824,7 @@ namespace AgentHierarchyApi.Migrations
                     b.HasIndex("Uuid")
                         .IsUnique();
 
-                    b.ToTable("t_client_contact", (string)null);
+                    b.ToTable("T_CLIENT_CONTACT", (string)null);
 
                     b.HasData(
                         new
@@ -838,11 +834,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "MOBILE",
                             ContactValue = "081-234-5678",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = true,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("6d5909ae-010e-4016-bee9-2ca04907605d")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("c90b6409-c173-4564-83d9-b263707b8e85")
                         },
                         new
                         {
@@ -851,11 +847,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "EMAIL",
                             ContactValue = "somchai.j@email.com",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = false,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("e7f9f4bd-b7a6-445b-9146-ce4c62e091a7")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("72238c74-fefb-405e-ab31-cb49111a149b")
                         },
                         new
                         {
@@ -864,11 +860,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "MOBILE",
                             ContactValue = "082-345-6789",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = true,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("1820f6e9-c76d-4380-9621-a45fe5ef6dfe")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("3e20db50-7e85-49bb-9683-055f63a44ac9")
                         },
                         new
                         {
@@ -877,11 +873,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "EMAIL",
                             ContactValue = "somying.r@email.com",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = false,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("4e418ee5-04dd-47fc-8372-fbffb5ae48d4")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("4b985348-937c-4414-82a6-c2dfbbc5f964")
                         },
                         new
                         {
@@ -890,11 +886,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "OFFICE_PHONE",
                             ContactValue = "02-123-4567",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = true,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("29f9268d-b012-4b39-9473-46b5cea7e0f1")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("ff033502-f87c-42a4-9aac-6bed482d506b")
                         },
                         new
                         {
@@ -903,11 +899,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "EMAIL",
                             ContactValue = "info@thaiinsurance.com",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = false,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("45e53000-0efc-44e9-9a26-0233c92d1639")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("808f4888-f9e9-49e0-83b1-1dd43d0bb351")
                         },
                         new
                         {
@@ -916,11 +912,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "MOBILE",
                             ContactValue = "+1-555-1234",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = true,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("f303958f-6ece-4ee2-8897-6fc34cf7edce")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("035c6538-03e3-4915-aa8d-df16ec8e9baa")
                         },
                         new
                         {
@@ -929,11 +925,11 @@ namespace AgentHierarchyApi.Migrations
                             ContactTypeCode = "EMAIL",
                             ContactValue = "john.smith@techglobal.com",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             IsPrimary = false,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("60db4a13-6513-4b13-b8e0-93fd728bd5bb")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("47769d03-bace-407d-9d4f-030fe2ce62a8")
                         });
                 });
 
@@ -1019,7 +1015,7 @@ namespace AgentHierarchyApi.Migrations
                     b.HasIndex("Uuid")
                         .IsUnique();
 
-                    b.ToTable("t_client_role", (string)null);
+                    b.ToTable("T_CLIENT_ROLE", (string)null);
 
                     b.HasData(
                         new
@@ -1027,7 +1023,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 1,
                             ClientCode = "CLI0001",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
@@ -1037,15 +1033,15 @@ namespace AgentHierarchyApi.Migrations
                             RoleCode = "POLICY_OWNER",
                             RoleSeqNo = 1,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("66c11b5f-b802-4afe-a412-d8e33ebeade1")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("72cd880b-0ff2-4dd2-8857-fbb5d2457383")
                         },
                         new
                         {
                             Id = 2,
                             ClientCode = "CLI0001",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
@@ -1055,15 +1051,15 @@ namespace AgentHierarchyApi.Migrations
                             RoleCode = "INSURED",
                             RoleSeqNo = 1,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("a3d185b7-4b18-471b-a055-58b6ba0cb497")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("a3c46463-2e54-4814-8bb4-5ced0aca1e71")
                         },
                         new
                         {
                             Id = 3,
                             ClientCode = "CLI0002",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
@@ -1073,15 +1069,15 @@ namespace AgentHierarchyApi.Migrations
                             RoleCode = "BENEFICIARY",
                             RoleSeqNo = 1,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("5acef5af-a3e2-40b9-9c0b-1b4092df7083")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("83ebd3bf-41ee-4fbb-97e8-a7eed441b97d")
                         },
                         new
                         {
                             Id = 4,
                             ClientCode = "CLI0003",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             EffectiveDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             ExpiryDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
@@ -1091,15 +1087,15 @@ namespace AgentHierarchyApi.Migrations
                             RoleCode = "CORPORATE_CLIENT",
                             RoleSeqNo = 1,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("5698af4b-a98b-4e79-93e5-dcac5c607457")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("be6b97c1-c9e1-4f05-a059-0d0b69c5554c")
                         },
                         new
                         {
                             Id = 5,
                             ClientCode = "CLI0004",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             EffectiveDate = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             ExpiryDate = new DateTime(2026, 2, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
@@ -1109,8 +1105,8 @@ namespace AgentHierarchyApi.Migrations
                             RoleCode = "POLICY_OWNER",
                             RoleSeqNo = 1,
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
-                            Uuid = new Guid("2a75e855-f8d0-4bb6-9098-1160b1677bab")
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
+                            Uuid = new Guid("7609e168-e7c3-497b-bf9e-79d8e1cd0e6f")
                         });
                 });
 
@@ -1145,7 +1141,7 @@ namespace AgentHierarchyApi.Migrations
 
                     b.HasIndex("RankId");
 
-                    b.ToTable("hierarchies", (string)null);
+                    b.ToTable("Hierarchies");
 
                     b.HasData(
                         new
@@ -1346,7 +1342,7 @@ namespace AgentHierarchyApi.Migrations
                     b.HasIndex("Uuid")
                         .IsUnique();
 
-                    b.ToTable("t_image", (string)null);
+                    b.ToTable("T_IMAGE", (string)null);
 
                     b.HasData(
                         new
@@ -1354,7 +1350,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 1,
                             ContentType = "image/jpeg",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DisplayOrder = 1,
                             FileName = "somchai_profile.jpg",
                             FileSize = 70L,
@@ -1369,7 +1365,7 @@ namespace AgentHierarchyApi.Migrations
                             Remark = "Profile picture",
                             ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             Uuid = new Guid("11111111-1111-1111-1111-111111111111"),
                             Width = 800
                         },
@@ -1378,7 +1374,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 2,
                             ContentType = "image/jpeg",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DisplayOrder = 2,
                             FileName = "somchai_idcard.jpg",
                             FileSize = 70L,
@@ -1393,7 +1389,7 @@ namespace AgentHierarchyApi.Migrations
                             Remark = "National ID Card",
                             ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             Uuid = new Guid("22222222-2222-2222-2222-222222222222"),
                             Width = 1024
                         },
@@ -1402,7 +1398,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 3,
                             ContentType = "image/jpeg",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DisplayOrder = 1,
                             FileName = "somying_profile.jpg",
                             FileSize = 70L,
@@ -1417,7 +1413,7 @@ namespace AgentHierarchyApi.Migrations
                             Remark = "Profile picture",
                             ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             Uuid = new Guid("33333333-3333-3333-3333-333333333333"),
                             Width = 800
                         },
@@ -1426,7 +1422,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 4,
                             ContentType = "image/png",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DisplayOrder = 1,
                             FileName = "thai_insurance_logo.png",
                             FileSize = 70L,
@@ -1441,7 +1437,7 @@ namespace AgentHierarchyApi.Migrations
                             Remark = "Company Logo",
                             ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             Uuid = new Guid("44444444-4444-4444-4444-444444444444"),
                             Width = 400
                         },
@@ -1450,7 +1446,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 5,
                             ContentType = "image/jpeg",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DisplayOrder = 2,
                             FileName = "company_registration.pdf.jpg",
                             FileSize = 70L,
@@ -1465,7 +1461,7 @@ namespace AgentHierarchyApi.Migrations
                             Remark = "Company Registration Document",
                             ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             Uuid = new Guid("55555555-5555-5555-5555-555555555555"),
                             Width = 1200
                         },
@@ -1474,7 +1470,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 6,
                             ContentType = "image/jpeg",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DisplayOrder = 1,
                             FileName = "john_passport.jpg",
                             FileSize = 70L,
@@ -1489,7 +1485,7 @@ namespace AgentHierarchyApi.Migrations
                             Remark = "Passport Photo Page",
                             ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             Uuid = new Guid("66666666-6666-6666-6666-666666666666"),
                             Width = 1024
                         },
@@ -1498,7 +1494,7 @@ namespace AgentHierarchyApi.Migrations
                             Id = 7,
                             ContentType = "image/png",
                             CreatedBy = "System",
-                            CreatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            CreatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             DisplayOrder = 2,
                             FileName = "john_signature.png",
                             FileSize = 70L,
@@ -1513,7 +1509,7 @@ namespace AgentHierarchyApi.Migrations
                             Remark = "Digital Signature",
                             ThumbnailData = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 218, 99, 100, 248, 207, 80, 15, 0, 3, 134, 1, 128, 90, 52, 125, 107, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 },
                             UpdatedBy = "System",
-                            UpdatedDate = new DateTime(2025, 11, 13, 9, 10, 37, 45, DateTimeKind.Utc).AddTicks(7176),
+                            UpdatedDate = new DateTime(2025, 11, 13, 5, 1, 29, 168, DateTimeKind.Utc).AddTicks(8314),
                             Uuid = new Guid("77777777-7777-7777-7777-777777777777"),
                             Width = 400
                         });
@@ -1557,7 +1553,7 @@ namespace AgentHierarchyApi.Migrations
                     b.HasIndex("LicenseNumber")
                         .IsUnique();
 
-                    b.ToTable("licenses", (string)null);
+                    b.ToTable("Licenses");
                 });
 
             modelBuilder.Entity("AgentHierarchyApi.Models.Rank", b =>
@@ -1586,7 +1582,7 @@ namespace AgentHierarchyApi.Migrations
                     b.HasIndex("RankCode")
                         .IsUnique();
 
-                    b.ToTable("ranks", (string)null);
+                    b.ToTable("Ranks");
 
                     b.HasData(
                         new
