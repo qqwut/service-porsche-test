@@ -20,31 +20,46 @@ public class AgentService : IAgentService
     public async Task<IEnumerable<AgentDto>> GetAllAgentsAsync()
     {
         var agents = await _agentRepository.GetAllAgentsAsync();
-        return agents.Select(MapToDto);
+        var mapped = new List<AgentDto>();
+        foreach (var agent in agents)
+        {
+            mapped.Add(await MapToDtoAsync(agent));
+        }
+        return mapped;
     }
 
     public async Task<AgentDto?> GetAgentByIdAsync(int id)
     {
         var agent = await _agentRepository.GetAgentByIdAsync(id);
-        return agent != null ? MapToDto(agent) : null;
+        return agent != null ? await MapToDtoAsync(agent) : null;
     }
 
     public async Task<AgentDto?> GetAgentByCodeAsync(string agentCode)
     {
         var agent = await _agentRepository.GetAgentByCodeAsync(agentCode);
-        return agent != null ? MapToDto(agent) : null;
+        return agent != null ? await MapToDtoAsync(agent) : null;
     }
 
     public async Task<IEnumerable<AgentDto>> GetAgentsByRankAsync(string rankCode)
     {
         var agents = await _agentRepository.GetAgentsByRankAsync(rankCode);
-        return agents.Select(MapToDto);
+        var mapped = new List<AgentDto>();
+        foreach (var agent in agents)
+        {
+            mapped.Add(await MapToDtoAsync(agent));
+        }
+        return mapped;
     }
 
     public async Task<IEnumerable<AgentDto>> GetAgentsByHierarchyAsync(string hierarchyCode)
     {
         var agents = await _agentRepository.GetAgentsByHierarchyAsync(hierarchyCode);
-        return agents.Select(MapToDto);
+        var mapped = new List<AgentDto>();
+        foreach (var agent in agents)
+        {
+            mapped.Add(await MapToDtoAsync(agent));
+        }
+        return mapped;
     }
 
     public async Task<AgentHierarchyTreeDto?> GetAgentHierarchyTreeAsync(int? rootAgentId = null)
@@ -70,7 +85,7 @@ public class AgentService : IAgentService
         var trees = new List<AgentHierarchyTreeDto>();
         foreach (var root in rootAgents)
         {
-            trees.Add(BuildHierarchyTree(root, agentDict));
+            trees.Add(await BuildHierarchyTreeAsync(root, agentDict));
         }
 
         // If no root specified and multiple top-level agents, return a virtual root
@@ -99,7 +114,7 @@ public class AgentService : IAgentService
         var allAgents = await _agentRepository.GetAllAgentsAsync();
         var agentDict = allAgents.ToDictionary(a => a.Id);
 
-        return BuildHierarchyTree(rootAgent, agentDict);
+        return await BuildHierarchyTreeAsync(rootAgent, agentDict);
     }
 
     public async Task<AgentUpwardTreeDto?> GetAgentUpwardTreeByCodeAsync(string agentCode)
@@ -119,7 +134,7 @@ public class AgentService : IAgentService
             AgentCode = agent.AgentCode,
             AgentName = agent.AgentName,
             AgentType = agent.AgentType,
-            LeaderCode = agent.LeaderCode,
+            LeaderCode = agent.LeaderCode ?? await ComputeLeaderCodeAsync(agent),
             HierarchyCode = agent.Hierarchy.HierarchyCode,
             RankCode = agent.Rank.RankCode,
             ParentAgentId = agent.ParentAgentId,
@@ -138,7 +153,7 @@ public class AgentService : IAgentService
         return node;
     }
 
-    private AgentHierarchyTreeDto BuildHierarchyTree(Agent agent, Dictionary<int, Agent> allAgents)
+    private async Task<AgentHierarchyTreeDto> BuildHierarchyTreeAsync(Agent agent, Dictionary<int, Agent> allAgents)
     {
         var node = new AgentHierarchyTreeDto
         {
@@ -146,7 +161,7 @@ public class AgentService : IAgentService
             AgentCode = agent.AgentCode,
             AgentName = agent.AgentName,
             AgentType = agent.AgentType,
-            LeaderCode = agent.LeaderCode,
+            LeaderCode = agent.LeaderCode ?? await ComputeLeaderCodeAsync(agent),
             HierarchyCode = agent.Hierarchy.HierarchyCode,
             RankCode = agent.Rank.RankCode,
             Children = new List<AgentHierarchyTreeDto>()
@@ -155,7 +170,7 @@ public class AgentService : IAgentService
         var children = allAgents.Values.Where(a => a.ParentAgentId == agent.Id).ToList();
         foreach (var child in children)
         {
-            node.Children.Add(BuildHierarchyTree(child, allAgents));
+            node.Children.Add(await BuildHierarchyTreeAsync(child, allAgents));
         }
 
         return node;
@@ -203,16 +218,18 @@ public class AgentService : IAgentService
             AgentCode = agentDto.AgentCode,
             AgentName = agentDto.AgentName,
             AgentType = agentDto.AgentType,
-            LeaderCode = agentDto.LeaderCode,
             HierarchyId = hierarchy.Id,
             RankId = hierarchy.RankId,
             ParentAgentId = agentDto.ParentAgentId,
             IsActive = true
         };
 
+        // Compute and persist LeaderCode
+        agent.LeaderCode = await ComputeLeaderCodeAsync(agent);
+
         var createdAgent = await _agentRepository.CreateAgentAsync(agent);
         var result = await _agentRepository.GetAgentByIdAsync(createdAgent.Id);
-        return MapToDto(result!);
+        return await MapToDtoAsync(result!);
     }
 
     public async Task<AgentDto?> UpdateAgentAsync(int id, AgentUpdateDto agentDto)
@@ -252,15 +269,17 @@ public class AgentService : IAgentService
 
         agent.AgentName = agentDto.AgentName;
         agent.AgentType = agentDto.AgentType;
-        agent.LeaderCode = agentDto.LeaderCode;
         agent.HierarchyId = hierarchy.Id;
         agent.RankId = hierarchy.RankId;
         agent.ParentAgentId = agentDto.ParentAgentId;
         agent.IsActive = agentDto.IsActive;
 
+        // Recompute LeaderCode on updates (rank/parent may change)
+        agent.LeaderCode = await ComputeLeaderCodeAsync(agent);
+
         var updatedAgent = await _agentRepository.UpdateAgentAsync(agent);
         var result = await _agentRepository.GetAgentByIdAsync(updatedAgent.Id);
-        return MapToDto(result!);
+        return await MapToDtoAsync(result!);
     }
 
     public async Task<bool> DeleteAgentAsync(int id)
@@ -268,15 +287,44 @@ public class AgentService : IAgentService
         return await _agentRepository.DeleteAgentAsync(id);
     }
 
-    private AgentDto MapToDto(Agent agent)
+    private async Task<string?> ComputeLeaderCodeAsync(Agent agent)
     {
+        // AE has no leader; AL is its own leader; AG looks upward for nearest AL
+        var rankCode = agent.Rank?.RankCode ?? (await _context.Ranks.FindAsync(agent.RankId))?.RankCode;
+        if (rankCode == "AE")
+            return null;
+        if (rankCode == "AL")
+            return agent.AgentCode;
+
+        // For AG, walk up the chain to find nearest AL
+        var currentParentId = agent.ParentAgentId;
+        while (currentParentId.HasValue)
+        {
+            var parent = await _agentRepository.GetAgentByIdAsync(currentParentId.Value);
+            if (parent == null)
+                break;
+            if (parent.Rank.RankCode == "AL")
+                return parent.AgentCode;
+            currentParentId = parent.ParentAgentId;
+        }
+        return null;
+    }
+
+    private async Task<AgentDto> MapToDtoAsync(Agent agent)
+    {
+        var leaderCode = agent.LeaderCode;
+        if (string.IsNullOrEmpty(leaderCode))
+        {
+            leaderCode = await ComputeLeaderCodeAsync(agent);
+        }
+
         return new AgentDto
         {
             Id = agent.Id,
             AgentCode = agent.AgentCode,
             AgentName = agent.AgentName,
             AgentType = agent.AgentType,
-            LeaderCode = agent.LeaderCode,
+            LeaderCode = leaderCode,
             HierarchyCode = agent.Hierarchy.HierarchyCode,
             RankCode = agent.Rank.RankCode,
             ParentAgentId = agent.ParentAgentId,

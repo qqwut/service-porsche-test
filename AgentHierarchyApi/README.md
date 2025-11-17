@@ -1,6 +1,6 @@
 # Agent Hierarchy API
 
-A .NET 8 Web API for managing agent hierarchy structure with support for three ranks (AG, AL, AE) and nine hierarchy levels (A1-A9).
+A .NET 6 Web API (EF Core + PostgreSQL) for managing an agent hierarchy with three ranks (AG, AL, AE) and nine hierarchy levels (A1–A9).
 
 ## Overview
 
@@ -25,9 +25,9 @@ The hierarchy flows from **AE → AL → AG** (Executive → Leader → General)
 
 ## Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- SQL Server (LocalDB, Express, or full version)
-- Visual Studio 2022 / VS Code / Rider (optional)
+- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- PostgreSQL 13+ (or compatible)
+- Visual Studio Code / Visual Studio / Rider (optional)
 
 ## Database Design
 
@@ -49,12 +49,12 @@ cd AgentHierarchyApi
 
 ### 2. Configure Database Connection
 
-Update the connection string in `appsettings.json`:
+Update the PostgreSQL connection string in `appsettings.json`:
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=AgentHierarchyDB;Trusted_Connection=True;TrustServerCertificate=True;"
+    "DefaultConnection": "Host=localhost;Port=5432;Database=agent_hierarchy;Username=postgres;Password=yourpassword"
   }
 }
 ```
@@ -73,8 +73,7 @@ dotnet run
 
 The API will start and be available at:
 - HTTP: `http://localhost:5000`
-- HTTPS: `https://localhost:5001`
-- Swagger UI: `https://localhost:5001` (root path)
+- Swagger UI: `http://localhost:5000` (root path in Development)
 
 The database will be automatically created and seeded with sample data on first run.
 
@@ -101,7 +100,9 @@ dotnet ef database update
 | GET | `/api/agents/code/{agentCode}` | Get agent by code (e.g., AG0001) |
 | GET | `/api/agents/rank/{rankCode}` | Get agents by rank (AG, AL, or AE) |
 | GET | `/api/agents/hierarchy/{hierarchyCode}` | Get agents by hierarchy (A1-A9) |
-| GET | `/api/agents/hierarchy-tree?rootAgentId={id}` | Get hierarchy tree structure |
+| GET | `/api/agents/hierarchy-tree?rootAgentId={id}` | Get hierarchy tree structure (top-down) |
+| GET | `/api/agents/hierarchy-tree/code/{agentCode}` | Get hierarchy subtree starting at agent code |
+| GET | `/api/agents/upward-tree/code/{agentCode}` | Get upward tree (parent chain) for agent code |
 | POST | `/api/agents` | Create new agent |
 | PUT | `/api/agents/{id}` | Update agent |
 | DELETE | `/api/agents/{id}` | Delete agent (soft delete) |
@@ -117,9 +118,22 @@ dotnet ef database update
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/hierarchies` | Get all hierarchies |
+| GET | `/api/hierarchies` | Get all hierarchies (projected DTO to avoid cycles) |
 | GET | `/api/hierarchies/{hierarchyCode}` | Get hierarchy by code |
-| GET | `/api/hierarchies/rank/{rankCode}` | Get hierarchies by rank |
+| GET | `/api/hierarchies/rank/{rankCode}` | Get hierarchies by rank (AG/AL/AE) |
+
+Hierarchy responses are shaped as:
+
+```json
+{
+  "id": 4,
+  "hierarchyCode": "A4",
+  "hierarchyName": "Hierarchy A4",
+  "level": 4,
+  "rankId": 2,
+  "rank": { "id": 2, "rankCode": "AL", "rankName": "Agent Leader", "level": 2 }
+}
+```
 
 ## API Usage Examples
 
@@ -148,6 +162,7 @@ Content-Type: application/json
   "rankCode": "AG",
   "parentAgentId": 2,
   "parentAgentCode": "AL0001",
+  "leaderCode": "AL0001",
   "isActive": true
 }
 ```
@@ -181,6 +196,7 @@ GET /api/agents/hierarchy-tree
           "agentName": "General Agent 1",
           "hierarchyCode": "A3",
           "rankCode": "AG",
+          "leaderCode": "AL0001",
           "children": []
         }
       ]
@@ -207,6 +223,7 @@ GET /api/agents/rank/AG
     "rankCode": "AG",
     "parentAgentId": 2,
     "parentAgentCode": "AL0001",
+    "leaderCode": "AL0001",
     "isActive": true
   }
 ]
@@ -226,6 +243,8 @@ Content-Type: application/json
   "isActive": true
 }
 ```
+
+You can also use this endpoint to “promote” an agent by changing `hierarchyCode` (e.g., A7→A4 for AE→AL) and setting an appropriate `parentAgentId` according to the hierarchy rules.
 
 ## Hierarchy Rules
 
@@ -289,9 +308,9 @@ AgentHierarchyApi/
 
 ## Technologies Used
 
-- **Framework**: .NET 8
-- **ORM**: Entity Framework Core 8.0
-- **Database**: SQL Server
+- **Framework**: .NET 6
+- **ORM**: Entity Framework Core 6
+- **Database**: PostgreSQL (Npgsql provider)
 - **API Documentation**: Swagger/OpenAPI
 - **Architecture**: Repository Pattern + Service Layer
 

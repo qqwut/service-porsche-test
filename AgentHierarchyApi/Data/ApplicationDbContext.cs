@@ -19,6 +19,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<ClientContact> ClientContacts { get; set; } = null!;
     public DbSet<ClientRole> ClientRoles { get; set; } = null!;
     public DbSet<Image> Images { get; set; } = null!;
+    public DbSet<Leader> Leaders { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -94,6 +95,34 @@ public class ApplicationDbContext : DbContext
         .WithMany(a => a.Licenses)
                 .HasForeignKey(e => e.AgentId)
                 .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        // Configure Leader entity
+        modelBuilder.Entity<Leader>(entity =>
+        {
+            entity.ToTable("leaders");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.RefId).IsRequired().HasMaxLength(20);
+            entity.Property(e => e.PromoteType).IsRequired().HasMaxLength(20);
+            entity.Property(e => e.Affiliation).HasMaxLength(100);
+            entity.Property(e => e.Branch).HasMaxLength(100);
+            entity.Property(e => e.RefLicense).HasMaxLength(50);
+            entity.Property(e => e.RefCompany).HasMaxLength(100);
+            entity.Property(e => e.LastRank).HasMaxLength(10);
+            entity.Property(e => e.CreatedDate).IsRequired();
+            entity.Property(e => e.UpdatedDate).IsRequired();
+            entity.Property(e => e.CreatedBy).HasMaxLength(50);
+            entity.Property(e => e.UpdatedBy).HasMaxLength(50);
+            
+            entity.HasIndex(e => e.RefId).IsUnique();
+            entity.HasIndex(e => e.PromoteType);
+            entity.HasIndex(e => e.LastRank);
+
+            entity.HasOne(e => e.Agent)
+                .WithOne()
+                .HasForeignKey<Leader>(e => e.RefId)
+                .HasPrincipalKey<Agent>(a => a.AgentCode)
+                .OnDelete(DeleteBehavior.Restrict);
         });
 
         // Configure Client entity

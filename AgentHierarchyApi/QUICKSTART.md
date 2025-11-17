@@ -3,36 +3,19 @@
 ## Setup Steps
 
 ### 1. Prerequisites
-- .NET 8 SDK installed
-- SQL Server (LocalDB, Express, or full version)
+- .NET 6 SDK installed
+- PostgreSQL (local or remote)
 
 ### 2. Configure Database Connection
 
-Edit `appsettings.json` to set your SQL Server connection string:
+Edit `appsettings.json` to set your PostgreSQL connection string:
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=AgentHierarchyDB;Trusted_Connection=True;TrustServerCertificate=True;"
+    "DefaultConnection": "Host=localhost;Port=5432;Database=agent_hierarchy;Username=postgres;Password=yourpassword"
   }
 }
-```
-
-**Common Connection Strings:**
-
-**SQL Server LocalDB:**
-```
-Server=(localdb)\\mssqllocaldb;Database=AgentHierarchyDB;Trusted_Connection=True;TrustServerCertificate=True;
-```
-
-**SQL Server Express:**
-```
-Server=localhost\\SQLEXPRESS;Database=AgentHierarchyDB;Trusted_Connection=True;TrustServerCertificate=True;
-```
-
-**SQL Server with credentials:**
-```
-Server=localhost;Database=AgentHierarchyDB;User Id=sa;Password=YourPassword;TrustServerCertificate=True;
 ```
 
 ### 3. Run the Application
@@ -44,8 +27,8 @@ dotnet run
 ```
 
 The API will be available at:
-- **Swagger UI**: https://localhost:5001
-- **API Base**: https://localhost:5001/api
+- **Swagger UI**: http://localhost:5000 (root)
+- **API Base**: http://localhost:5000/api
 
 The database will be automatically created and seeded with sample data on first run.
 
@@ -53,17 +36,17 @@ The database will be automatically created and seeded with sample data on first 
 
 ### Test 1: Get All Agents
 ```bash
-curl https://localhost:5001/api/agents
+curl http://localhost:5000/api/agents
 ```
 
 ### Test 2: Get Hierarchy Tree
 ```bash
-curl https://localhost:5001/api/agents/hierarchy-tree
+curl http://localhost:5000/api/agents/hierarchy-tree
 ```
 
 ### Test 3: Create New Agent
 ```bash
-curl -X POST https://localhost:5001/api/agents \
+curl -X POST http://localhost:5000/api/agents \
   -H "Content-Type: application/json" \
   -d '{
     "agentCode": "AG0010",
@@ -75,7 +58,7 @@ curl -X POST https://localhost:5001/api/agents \
 
 ### Test 4: Get Agent by Rank
 ```bash
-curl https://localhost:5001/api/agents/rank/AG
+curl http://localhost:5000/api/agents/rank/AG
 ```
 
 ## Sample Data
@@ -120,7 +103,9 @@ AE0001 (A9, AE) - Executive Agent 1
 | `/api/agents/code/{code}` | GET | Get agent by code |
 | `/api/agents/rank/{rank}` | GET | Get agents by rank (AG/AL/AE) |
 | `/api/agents/hierarchy/{code}` | GET | Get agents by hierarchy (A1-A9) |
-| `/api/agents/hierarchy-tree` | GET | Get full hierarchy tree |
+| `/api/agents/hierarchy-tree` | GET | Get full hierarchy tree (top-down) |
+| `/api/agents/hierarchy-tree/code/{agentCode}` | GET | Get hierarchy subtree by agent code |
+| `/api/agents/upward-tree/code/{agentCode}` | GET | Get upward tree (parent chain) |
 | `/api/agents` | POST | Create new agent |
 | `/api/agents/{id}` | PUT | Update agent |
 | `/api/agents/{id}` | DELETE | Delete agent (soft delete) |
@@ -154,7 +139,7 @@ dotnet ef database update
 
 ```bash
 # 1. Create top-level AE agent
-curl -X POST https://localhost:5001/api/agents \
+curl -X POST http://localhost:5000/api/agents \
   -H "Content-Type: application/json" \
   -d '{
     "agentCode": "AE0002",
@@ -164,7 +149,7 @@ curl -X POST https://localhost:5001/api/agents \
   }'
 
 # 2. Create AL agent under AE0002 (assume ID is 7)
-curl -X POST https://localhost:5001/api/agents \
+curl -X POST http://localhost:5000/api/agents \
   -H "Content-Type: application/json" \
   -d '{
     "agentCode": "AL0003",
@@ -174,7 +159,7 @@ curl -X POST https://localhost:5001/api/agents \
   }'
 
 # 3. Create AG agent under AL0003 (assume ID is 8)
-curl -X POST https://localhost:5001/api/agents \
+curl -X POST http://localhost:5000/api/agents \
   -H "Content-Type: application/json" \
   -d '{
     "agentCode": "AG0010",
@@ -184,7 +169,7 @@ curl -X POST https://localhost:5001/api/agents \
   }'
 
 # 4. View the complete hierarchy
-curl https://localhost:5001/api/agents/hierarchy-tree
+curl http://localhost:5000/api/agents/hierarchy-tree
 ```
 
 ## Support
